@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>
+        Todo List
+    </h1>
+    <div>
+        <div id="todo-1">
+            <h4>1.i wake up 2 am</h4>
+            <button onclick="dele(1)">Delete</button>
+        </div>
+        </div>
+        <div>
+        <div id="todo-2">
+            <h4>1.i sleep sleep up 2 am</h4>
+            <button onclick="dele(2)">Delete</button>
+        </div>
+    </div>
+</body>
+<script>
+    function dele(index){
+        const element=document.getElementById("todo-"+index);
+    element.parentElement.removeChild(element);
+    }
+    
+</script>
+</html>

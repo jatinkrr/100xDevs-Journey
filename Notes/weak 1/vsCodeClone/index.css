@@ -1,0 +1,87 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background-color:rgb(13, 17, 23);
+}
+.logo{
+    color:white;
+    padding-top:10px;
+    padding-left:200px;
+    /* padding-left:150px; */
+    display:flex;
+    justify-content: space-between;
+    
+    font-size:20px;
+}
+
+
+
+.tools a{
+    padding-left:15px;
+    font-size:15px;
+    text-decoration:none;
+    color: white;
+    cursor: pointer;
+}
+.download{
+    /* display:flex;
+    justify-content:right; */
+    padding-left:180px;
+    gap: 10px;
+    padding-right:200px;
+    font-size:20px;
+    border:0px solid black;
+
+}
+
+.free{
+    color:white;
+    display: flex;
+    justify-content: center;
+    margin-top:40px;
+    font-size:18px;
+}
+.free a{
+    color:rgb(54, 120, 253);
+    
+    font-size:18px;
+}
+
+.line1{
+    color:white;
+    display:flex;
+    justify-content:center;
+    padding-top:50px;
+    font-size:30px;
+}
+
+.buts {
+    border:0px solid black;
+
+    padding:10px 30px 20px 40px;
+    
+    gap:20px;
+    /* padding-top:15px; */
+    display:flex;
+    justify-content:center;
+}
+
+.threea a{
+   color:rgb(44, 40, 226);
+   /* text-decoration: ; */
+}
+.threea {
+    color:white;
+   display:flex;
+   justify-content: center;
+}
+
+.image2{
+    padding-top:20px;
+    display:flex;
+    justify-content:center;
+}

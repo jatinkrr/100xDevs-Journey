@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Addition</title>
+  </head>
+  <body>
+    <input id="a" type="text" placeholder="enter value of A" />
+    <input id="b" , type="text" , placeholder="enter value of B" />
+    <button onclick="findSum()">Find Sum</button>
+    <div id="answer"></div>
+  </body>
+  <script>
+async function findSum() {
+  const a = document.getElementById("a").value;
+  const b = document.getElementById("b").value;
+
+  const response = await fetch("http://localhost:3000/sum", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ a, b }),
+  });
+
+  const data = await response.json(); 
+
+  console.log(data);
+
+  document.getElementById("answer").innerText = `Sum: ${data.ans}`;
+}
+
+  </script>
+</html>

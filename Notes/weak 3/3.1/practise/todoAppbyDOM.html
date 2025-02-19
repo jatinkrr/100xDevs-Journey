@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo2</title>
+</head>
+<body>
+    <div>
+        <input ="text" placeholder="enter TExt">
+        <button onclick="addTodo()">Add list</button>
+    </div>
+    
+</body>
+
+<script>
+    function addTodo(){
+     const element = document.querySelector("input");
+     const value = element.value;
+
+     const span = document.createElement("span");
+     
+     const button = document.createElement("button");
+
+     span.innerHTML = value;
+     button.innerHTML = "delete";
+
+     const element2 = document.createElement("div");
+
+     element2.appendChild(span);
+     element2.appendChild(button);
+
+     document.querySelector("body").appendChild(element2)
+    }
+    
+</script>
+
+
+
+
+</html>
+
+
+<!-- const element1= document.querySelector("input");
+const value = element1.value;
+ const span = document.createElement("span");
+ const button = document.createElement("button");
+ span.innerHTML = value;
+ button.innerHTML= "delete";
+
+ const element2= document.createElement("div");
+ element2.appendChild(span);
+ element2.appendChild(button);
+
+document.querySelector("body").appendChild(element2) -->

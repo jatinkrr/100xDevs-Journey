@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>todo list</h1>
+    <h4>1. to to bath</h4>
+    <h4>2. have dinner</h4>
+    <h4>3. to to ground</h4>
+    <div>
+        <input ="text" placeholder="add todo here">
+        <button onclick="addTodo()">add todo</button>
+    </div>
+    <script>
+        function addTodo(){
+        const element = document.querySelector("input");
+        const value= element.innerHTML
+        console.log(value)
+        }
+        const element2 = document.querySelectorAll("h4")[1 ];
+        const value2= element2.innerHTML
+        console.log(value2)
+
+    </script>
+</body>
+</html>

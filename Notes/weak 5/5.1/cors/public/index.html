@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
+   
+    <title>Document</title>
+</head>
+<body>
+    <input id="a" type="text" placeholder="value of a">
+    <input id="b" type="text" placeholder="value of b">
+    
+    <button onclick="findSum()">find Sum</button>
+
+    <button onclick="findSubtract()">find Subtract</button>
+
+    <button onclick="findMultiply()">find Multiply</button>
+
+    <button onclick="findDivide()">find Divide</button>
+
+    <div id="output"> </div>
+</body>
+<script>
+    async function findSum(){
+      const a=document.getElementById("a").value;
+      const b=document.getElementById("b").value;
+        const response = await axios.post("http://localhost:3000/sum",{
+            a : a,
+            b : b
+      });
+    //   const data= response.data
+    //   console.log(data)
+    
+    document.getElementById("output").innerText=response.data.ans;
+  }
+    async function findMultiply(){
+      const a=document.getElementById("a").value;
+      const b=document.getElementById("b").value;
+        const response = await axios.post("http://localhost:3000/multiply",{
+            a : a,
+            b : b
+      });
+    //   const data= response.data
+    //   console.log(data)
+    
+    document.getElementById("output").innerText=response.data.ans;
+  }
+    async function findSubtract(){
+      const a=document.getElementById("a").value;
+      const b=document.getElementById("b").value;
+        const response = await axios.post("http://localhost:3000/subtract",{
+            a : a,
+            b : b
+      });
+    //   const data= response.data
+    //   console.log(data)
+    
+    document.getElementById("output").innerText=response.data.ans;
+  }
+    async function findDivide(){
+      const a=document.getElementById("a").value;
+      const b=document.getElementById("b").value;
+        const response = await axios.post("http://localhost:3000/divide",{
+            a : a,
+            b : b
+      });
+    //   const data= response.data
+    //   console.log(data)
+    
+    document.getElementById("output").innerText=response.data.ans;
+  }
+</script>
+
+</html>

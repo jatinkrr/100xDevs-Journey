@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-Builder</title>
+</head>
+<body>
+    <div id="builder">
+        <form>
+            <label for="3">Select Field Type</label>
+            <select>
+                <option value="onclick='text()'">Text Input</option>
+                <option value="">checkBoc</option>
+                <option value="">Radio Button</option>
+            </select>
+            <input type="text" placeHolder="Enter text" style="display:flex ;">
+        </form>
+    </div>
+
+    <div id="preview">
+
+    </div>
+</body>
+
+<script>
+let todo=[]
+    function form(){
+        const element1= document.getElementById('builder')
+        todo.push({
+            
+            inp:document.querySelector('input').value
+        })
+        render()
+
+    }
+
+    function button(){
+        // const h1 = document.createElement("h1");
+        // const type=createElement("form")
+        const button = document.createElement("button");
+        button.innerHTML="Add Field";
+        button.onclick=function adding(){
+            const adding= document.querySelector("input")
+            adding.innerHTML=value;
+        }
+
+        return button;
+    }
+
+    function render(){
+        const parentElement= document.getElementById("builder");
+        parentElement.appendChild(button())   
+    }
+    
+    render() 
+
+
+
+
+</script>
+
+</html>

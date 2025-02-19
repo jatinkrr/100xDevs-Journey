@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO Application    </title>
+    <style>
+        body{
+            background-color: rgb(4, 4, 4);
+        }
+        *{
+            margin:0px;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+        .all{
+            border:2px solid rgb(255, 255, 255);
+            background-color: rgba(32, 31, 31, 0.386);
+            border-radius: 20px;
+            padding-top: 50px ;
+            padding-bottom: 450px;
+            padding-left: 100px;
+            padding-right: 100;
+
+            
+            /* display:flex;
+            justify-content: center; */
+            margin-top: 150px;
+            
+        }
+       
+
+    </style>
+   
+</head>
+
+
+<body>
+    <div class="all">
+   
+    <input typr="text" placeholder="enter text" class="input">
+    <button onclick="addTodo()" class="button">Enter Todos</button>
+    <div style="color: white;" id="text">
+        
+    </div>
+    </div>
+    
+</body>
+
+<script>
+     let todo=[];
+    function addTodo(){
+       todo.push({
+        title: document.querySelector("input").value
+       })
+       render()
+  }
+
+  function deleteTodo(index){
+    todo.splice(index,1);
+    render();
+  }
+
+  function createComponent(todo,index){
+    const div= document.createElement("div")
+    const h1= document.createElement("h4")
+    const button = document.createElement("button")
+
+    h1.innerHTML= todo.title;
+    button.innerHTML= "delete";
+    button.setAttribute("onclick","deleteTodo("+ index +")")
+    div.appendChild(h1)
+    div.appendChild(button)
+     return div
+  }
+
+  function render(){
+     document.querySelector("#text").innerHTML=""
+    for(let i=0; i<todo.length; i++){
+        const element = createComponent(todo[i],i);
+        document.querySelector("#text").appendChild(element)
+    }
+  }
+
+</script>
+</html>

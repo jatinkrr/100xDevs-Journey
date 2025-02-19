@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background change</title>
+</head>
+<style>
+    *{
+        margin:0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    #button{
+        display: flex;
+        justify-content: center;
+        padding: 15px 32px;
+    }
+    #app{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        
+        height:100vh;
+        /* background-color: rgb(60, 120, 46); */
+        gap:20px;
+        padding-top: 30px;
+    }
+    .button-style{
+        padding: 40px;
+        height:20px;
+        
+        
+    }
+</style>
+<body>
+    <!-- <div id=" button">
+        <button onclick="changeIt('red')">Red</button>
+        <button onclick="changeIt('black')">Black</button>
+        <button onclick="changeIt('blue')">Blue</button>
+     </div> -->
+
+     <div id="app">
+
+     </div>
+</body>
+<script>
+    // function changeIt(color){
+    //     document.getElementById("app").style.backgroundColor = color;
+    //     }
+    function changeColor(color){
+        const change = document.getElementById("app")
+        change.style.backgroundColor=color
+    }
+    
+    function button(text,color){//component 
+        const button=  document.createElement("button")
+        button.setAttribute("class","button-style")
+
+        button.innerText=text;
+        button.onclick=function(){
+            changeColor(color)
+        } 
+        return button;
+    }
+        function render(){//compont me state ki value daal deta h aur aur use dom pe render kr dega, here color is a state and button is a component
+            const parentElement = document.getElementById("app");
+            parentElement.innerHTML="";
+            parentElement.appendChild(button('red','red'));
+            parentElement.appendChild(button('blue','blue'));
+            parentElement.appendChild(button('black','black'));
+            parentElement.appendChild(button('yellow','yellow'));
+            parentElement.appendChild(button('pink','pink'));
+
+        }
+        render();
+
+   
+
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO </title>
+    <style>
+        body{
+            
+            color: rgb(217, 214, 214);
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>TODO APPLICATION</h1>
+    </div>
+    <div >
+        <input type="text" placeholder="enter list">
+        <button onclick="enterTask()">Enter Task</button>
+    <div id="todoAdd"></div>
+    </div>
+
+</body>
+
+<script>
+    let todo=[];
+
+    function enterTask(){
+        todo.push({
+            title:document.querySelector("input").value
+            
+        })
+        render()
+    }
+    function createComponent(todo){
+        const div = document.createElement("div");
+        const heading = document.createElement("h3");
+        const buttonEl = document.createElement("button");
+
+        buttonEl.innerHTML = "Delete";
+        heading.innerHTML = todo.title
+        div.append(heading);
+        div.append(buttonEl);
+        return div;
+    }
+
+
+    function render(){
+        document.querySelector("#todoAdd").innerHTML="";
+        for(let i=0; i<todo.length; i++){
+            const element = createComponent(todo[i]);
+            document.querySelector("#todoAdd").appendChild(element);
+        }
+    }
+
+
+
+
+</script>
+
+</html>
