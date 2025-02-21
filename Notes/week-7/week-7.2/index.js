@@ -1,4 +1,5 @@
 const express = require("express")
+const bcrypt = require("bcrypt")
 const {usermodel,todomodel} = require("./db")
 const mongoose = require("mongoose")
 const jwt = require("jsonwebtoken")
@@ -12,10 +13,13 @@ app.post("/signup",async(req,res)=>{
     const email = req.body.email;
     const password = req.body.password;
 
+    const hashedPassword = await bcrypt.hash(password,5);
+    console.log(hashedPassword)
+
     await usermodel.create({
         name:name,
         email:email,
-        password:password
+        password:hashedPassword
     })
     res.json({
         msg:"you are signed up"
@@ -36,7 +40,7 @@ app.post("/signin",async(req,res)=>{
         },JWT_SECRET)
         res.json({
             token:token
-        })
+        }) 
     }else{
         res.json({
             msg:"invalid credential"
