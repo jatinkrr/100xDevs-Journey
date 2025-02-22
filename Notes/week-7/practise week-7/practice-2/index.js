@@ -15,7 +15,7 @@ app.post("/signup",async (req,res)=>{
 
    await usermodel.create({
         name:name,
-        email:email,
+        email:email, 
         password:password
     })
     res.json({
