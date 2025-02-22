@@ -12,7 +12,7 @@ app.post("/signup",async(req,res)=>{
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
-
+try{
     const hashedPassword = await bcrypt.hash(password,5);
     console.log(hashedPassword)
 
@@ -23,7 +23,13 @@ app.post("/signup",async(req,res)=>{
     })
     res.json({
         msg:"you are signed up"
+
     })
+} catch(e){
+    res.json({
+        msg:"user already exits"
+    })
+}
 })
 
 app.post("/signin",async(req,res)=>{

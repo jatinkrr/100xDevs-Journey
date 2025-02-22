@@ -4,7 +4,7 @@ const ObjectId = mongoose.ObjectId
 
 const user = new Schema({
     name:String,
-    email:String,
+    email: {type:String, unique: true},
     password:String
 })
 
