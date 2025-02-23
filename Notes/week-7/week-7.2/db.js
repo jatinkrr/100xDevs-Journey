@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 const ObjectId = mongoose.ObjectId
@@ -20,4 +21,29 @@ const todomodel= mongoose.model("todoss",todo)
 module.exports={
     usermodel,
     todomodel
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // const mongoose = require("mongoose")
+    
+    // const Schema = mongoose.Schema
+    // const ObjectId = mongoose.ObjectId
+    
+    // const user = new Schema({
+    //     emai
+    // })
+    
+    
+    
+    
+    
+    
+    
 }
