@@ -2,6 +2,7 @@ const express = require("express")
 const bcrypt = require("bcrypt")
 const mongoose = require("mongoose")
 const {usermodel,todomodel} = require("./db")
+const {z} = require("zod")
 mongoose.connect("mongodb+srv://hunny:EKcZB1K9@cluster0.3vulh.mongodb.net/userdata-todo-newone")
 .then(() => console.log("Connected to MongoDB"))
 .catch((err) => console.error("MongoDB connection error:", err));
@@ -11,6 +12,23 @@ const app = express()
 app.use(express.json())
 
 app.post("/signup",async (req,res)=>{
+
+    const requiredBody = z.object({
+        name: z.string().min(3).max(100),
+        email: z.string().min(3).max(30).email(),
+        password: z.string().min(3).max(30)
+    })
+    //const parsebodywithsucess = requireBody.parse()   //it will parse the data or return error but safeparse will also give what the error
+    const parseBodyWithSucess = requiredBody.safeParse(req.body);
+    if(!parseBodyWithSucess.success){
+        res.json({
+            msg:"incooreect format",
+            error: parseBodyWithSucess.error
+        })
+        return
+    }
+
+
     const name = req.body.name
     const email = req.body.email
     const password = req.body.password
