@@ -11,6 +11,7 @@ const app = express()
 app.use(express.json())
 app.post("/signup",async(req,res)=>{
 
+    try{
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
@@ -27,12 +28,33 @@ app.post("/signup",async(req,res)=>{
     res.json({
         msg:"you are signed in"
     })
+}catch(e){
+    res.json({
+        msg:"email already exits"
+    })
+}
 })
-app.post("/signin",(req,res)=>{
-    const Username = req.body.Username;
+app.post("/signin",async (req,res)=>{
+    const email = req.body.email;
     const password = req.body.password;   
 
-    
+    const response =await usermodel.findOne({
+        email
+    })
+
+    const compare = await bcrypt.compare(password,response.password)
+    if(compare){
+        const token = jwt.sign({
+            id : response._id
+        },JWT_SECRET)
+        res.json({
+            token:token
+        })
+    }else{
+        res.json({
+            msg:"invalid credantial"
+        })
+    }
 
 })
   
