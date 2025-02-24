@@ -30,10 +30,10 @@ app.post("/signup",async(req,res)=>{
 })
 app.post("/signin",(req,res)=>{
     const Username = req.body.Username;
-    const password = req.body.password;
+    const password = req.body.password;   
 
     
 
 })
-
+  
 app.listen(3000)

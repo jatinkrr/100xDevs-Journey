@@ -12,4 +12,4 @@ const usermodel = mongoose.model('User-Data',user)
 
 module.exports = {
     usermodel
-}
+}     
