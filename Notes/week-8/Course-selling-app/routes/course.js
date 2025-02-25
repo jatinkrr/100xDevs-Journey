@@ -2,11 +2,11 @@ const {Router} = require("express")
 
 const coursesRoute = Router()
 
-coursesRoute.post("/courses",(req,res)=>{
+coursesRoute.post("/purchase",(req,res)=>{
     
 })
 
-coursesRoute.post("/courses",(req,res)=>{
+coursesRoute.post("/preview",(req,res)=>{
 
 })
 
