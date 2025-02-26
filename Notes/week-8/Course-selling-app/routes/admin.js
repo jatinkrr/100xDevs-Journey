@@ -2,7 +2,8 @@ const { Router } = require("express")
 const { adminmodel}= require("../db")
 const adminRouter = Router()
 const jwt = require("jsonwebtoken")
-const   JWT_ADMIN_TOKEN =  "random person make x"
+const {JWT_ADMIN_secret} = require("../config")
+const {auth} = require("../middleware/admin")
 const bcrypt = require("bcrypt")
 
 adminRouter.post("/signup",async(req,res)=>{
@@ -45,7 +46,7 @@ adminRouter.post("/signin",async (req,res)=>{
     if(matchPassword){
         const token = jwt.sign({
             id:response._id
-        },  JWT_ADMIN_TOKEN)
+        },  JWT_ADMIN_secret)
         res.json({
             token:token
         })
@@ -56,6 +57,23 @@ adminRouter.post("/signin",async (req,res)=>{
     }
 
 
+}) 
+adminRouter.post("/course",auth,async (req,res)=>{
+    const adminId = req.userId;
+
+    const{ title,description,price,imageUrl } = req.body;
+
+   const course = await adminmodel.create({
+    title,
+    description,
+    price,
+    imageUrl,
+    createrId:adminId
+    })
+    res.json({
+        msg:"courses created",
+        couseId:course._id
+    })
 }) 
 adminRouter.put("/course",async (req,res)=>{
     
