@@ -75,9 +75,26 @@ adminRouter.post("/course",auth,async (req,res)=>{
         couseId:course._id
     })
 }) 
-adminRouter.put("/course",async (req,res)=>{
+adminRouter.put("/course",auth,async (req,res)=>{
+    const adminId = req.userId;
+
+    const{ title,description,price,imageUrl,couseId } = req.body;
+
+   const course = await adminmodel.updateOne({
+    _id:couseId
+   },{
+    title,
+    description,
+    price,
+    imageUrl,
     
+    })
+    res.json({
+        msg:"courses updated",
+        couseId:course._id
+    })
 }) 
+
 adminRouter.get("/course/preview",async (req,res)=>{
     
 }) 
