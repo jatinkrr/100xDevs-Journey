@@ -1,4 +1,8 @@
+require("dotenv").config()
+console.log(process.env.mongoDB_url)
 const express = require("express")
+
+
 const mongoose = require("mongoose")
 
 const {userRoute} = require("./routes/user")
@@ -16,7 +20,7 @@ app.use("/purchase",purchaseRouter)
 
 
  async function main(){
-   await mongoose.connect("")
+   await mongoose.connect(process.env.mongoDB_url)
 
     app.listen(3000)
     console.log("listing on port 3000")
