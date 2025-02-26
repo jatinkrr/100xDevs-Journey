@@ -16,7 +16,7 @@ app.use("/purchase",purchaseRouter)
 
 
  async function main(){
-   await mongoose.connect("mongodb+srv://hunny:EKcZB1K9@cluster0.3vulh.mongodb.net/coussera-app")
+   await mongoose.connect("")
 
     app.listen(3000)
     console.log("listing on port 3000")
