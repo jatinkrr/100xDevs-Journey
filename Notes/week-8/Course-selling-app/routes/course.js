@@ -1,5 +1,5 @@
-const {Router} = require("express")
-const { coursemodel}= require("../db")
+const { Router } = require("express")
+const { coursemodel }= require("../db")
 
 const coursesRoute = Router()
 
@@ -14,3 +14,5 @@ coursesRoute.post("/preview",(req,res)=>{
 module.exports = {
     coursesRoute
 }
+
+
