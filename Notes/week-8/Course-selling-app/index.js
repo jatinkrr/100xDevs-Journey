@@ -7,6 +7,7 @@ const {adminRouter} = require("./routes/admin")
 const {purchaseRouter} = require("./routes/purchase")
 
 const app = express()
+app.use(express.json())
 
 app.use("/user", userRoute)
 app.use("/course", coursesRoute)

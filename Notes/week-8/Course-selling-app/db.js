@@ -5,7 +5,7 @@ const ObjectId = mongoose.ObjectId
 
 const users = new Schema({
     
-    firstNname:String,
+    firstName:String,
     lastName:String,
     email:{type:String, unique:true},
     password:String
