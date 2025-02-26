@@ -1,6 +1,4 @@
 const mongoose = require("mongoose")
- mongoose.connect("mongodb+srv://hunny:EKcZB1K9@cluster0.3vulh.mongodb.net/coussera-app")
- console.log("connected")
 
 const Schema = mongoose.Schema
 const ObjectId = mongoose.ObjectId
