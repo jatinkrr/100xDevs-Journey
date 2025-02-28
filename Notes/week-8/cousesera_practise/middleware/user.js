@@ -1,8 +1,9 @@
 const jwt = require("jsonwebtoken")
-const user_secret = process.env.user_secret
+const {user_secret} = require("../config")
 
-function user_auth(req,res,next){
+function auth(req,res,next){
 
+    // const token = req.headers.token
     const token = req.headers.token
     const decodedinfo = jwt.verify(token,user_secret)
 
@@ -18,5 +19,5 @@ function user_auth(req,res,next){
 }
 
 module.exports={
-    user_auth
+    auth
 }

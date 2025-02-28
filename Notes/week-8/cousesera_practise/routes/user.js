@@ -1,19 +1,22 @@
 const {Router} = require("express")
 const {usermodel} = require("../db")
 const jwt = require("jsonwebtoken")
-const user_secret = process.env.user_secret
+const {user_secret} =require("../config")
 const userRoute = Router()
 const bcrypt = require("bcrypt")
-const {user_auth} = require("../middleware/user")
+const {auth} = require("../middleware/user")
 
 userRoute.post("/signup",async (req,res)=>{
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const email = req.body.email;
     const password = req.body.password;
+    if (!firstName || !lastName || !email || !password) {
+        return res.status(400).json({ msg: "All fields are required!" });
+    }
 
+    try{
     const hashedpassword = await bcrypt.hash(password,5)
-try{
     await usermodel.create({
         firstName,
         lastName,
@@ -27,7 +30,7 @@ try{
     })
 }
 })
-userRoute.post("/signin",user_auth,async (req,res)=>{
+userRoute.post("/signin",async (req,res)=>{
     const email = req.body.email
     const password = req.body.password
 
@@ -53,7 +56,7 @@ userRoute.post("/signin",user_auth,async (req,res)=>{
         })
     }
 })
-userRoute.post("/purchases",user_auth,(req,res)=>{
+userRoute.post("/purchases",auth,(req,res)=>{
 
 })
 

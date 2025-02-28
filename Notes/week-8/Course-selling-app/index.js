@@ -22,7 +22,7 @@ app.use("/purchase",purchaseRouter)
  async function main(){
    await mongoose.connect(process.env.mongoDB_url)
 
-    app.listen(3000)
+    app.listen(6000)
     console.log("listing on port 3000")
 
 }

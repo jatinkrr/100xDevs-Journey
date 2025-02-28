@@ -2,7 +2,7 @@ const { Router } = require("express")
 const { adminmodel}= require("../db")
 const adminRouter = Router()
 const jwt = require("jsonwebtoken")
-const {JWT_ADMIN_secret} = require("../config")
+const {JWT_ADMIN_TOKEN} = require("../config")
 const {auth} = require("../middleware/admin")
 const bcrypt = require("bcrypt")
 
@@ -41,12 +41,13 @@ adminRouter.post("/signin",async (req,res)=>{
         })
         return
     }
+    try{
     const matchPassword =await bcrypt.compare(password,response.password)
     
     if(matchPassword){
         const token = jwt.sign({
             id:response._id
-        },  JWT_ADMIN_secret)
+        },JWT_ADMIN_TOKEN)
         res.json({
             token:token
         })
@@ -55,6 +56,11 @@ adminRouter.post("/signin",async (req,res)=>{
             msg:"invalid token"
         })
     }
+}catch(e){
+    res.json({
+        msg:"error"
+    })
+}
 
 
 }) 

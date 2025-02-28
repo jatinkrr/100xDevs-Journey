@@ -1,11 +1,12 @@
 
 const {Router} = require("express")
 const {adminmodel} = require("../db")
+const {coursemodel} = require("../db")
 const jwt = require("jsonwebtoken")
-const admin_secret = process.env.admin_secret
+const {admin_secret} =require("../config")
 const adminRoute = Router()
 const bcrypt = require("bcrypt")
-const {admin_auth} = require("../middleware/user")
+const {auth} = require("../middleware/admin")
 
 adminRoute.post("/signup",async (req,res)=>{
     const firstName = req.body.firstName;
@@ -54,13 +55,34 @@ adminRoute.post("/signin",async (req,res)=>{
         })
     }
 })
-adminRoute.post("/course",admin_auth,(req,res)=>{
+adminRoute.post("/course", auth, async (req, res) => {
+    const adminId = req.userId;  // Ensure this is correctly set in middleware
+    const { title, description, price, imageUrl } = req.body; // Corrected the field name
+
+    try {
+        const course = await coursemodel.create({
+            title,
+            description,
+            price,
+            imageUrl,
+            createrId: adminId
+        });
+        res.json({
+            msg: "Course created",
+            courseId: course._id
+        });
+    } catch (e) {
+        res.status(400).json({
+            msg: "Failed to create course",
+            error: e.message
+        });
+    }
+});
+
+adminRoute.put("/purchase",auth,(req,res)=>{
 
 })
-adminRoute.put("/purchase",admin_auth,(req,res)=>{
-
-})
-adminRoute.get("/purchase/preview",admin_auth,(req,res)=>{
+adminRoute.get("/purchase/preview",auth,(req,res)=>{
 
 })
  
