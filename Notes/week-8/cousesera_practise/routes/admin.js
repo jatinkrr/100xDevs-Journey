@@ -1,11 +1,11 @@
 
-
 const {Router} = require("express")
 const {adminmodel} = require("../db")
 const jwt = require("jsonwebtoken")
 const admin_secret = process.env.admin_secret
 const adminRoute = Router()
 const bcrypt = require("bcrypt")
+const {admin_auth} = require("../middleware/user")
 
 adminRoute.post("/signup",async (req,res)=>{
     const firstName = req.body.firstName;
@@ -54,13 +54,13 @@ adminRoute.post("/signin",async (req,res)=>{
         })
     }
 })
-adminRoute.post("/course",(req,res)=>{
-    
-})
-adminRoute.put("/purchase",(req,res)=>{
+adminRoute.post("/course",admin_auth,(req,res)=>{
 
 })
-adminRoute.get("/purchase/preview",(req,res)=>{
+adminRoute.put("/purchase",admin_auth,(req,res)=>{
+
+})
+adminRoute.get("/purchase/preview",admin_auth,(req,res)=>{
 
 })
  

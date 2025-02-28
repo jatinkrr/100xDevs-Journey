@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 const user_secret = process.env.user_secret
 const userRoute = Router()
 const bcrypt = require("bcrypt")
+const {user_auth} = require("../middleware/user")
 
 userRoute.post("/signup",async (req,res)=>{
     const firstName = req.body.firstName;
@@ -26,7 +27,7 @@ try{
     })
 }
 })
-userRoute.post("/signin",async (req,res)=>{
+userRoute.post("/signin",user_auth,async (req,res)=>{
     const email = req.body.email
     const password = req.body.password
 
@@ -52,7 +53,7 @@ userRoute.post("/signin",async (req,res)=>{
         })
     }
 })
-userRoute.post("/purchases",(req,res)=>{
+userRoute.post("/purchases",user_auth,(req,res)=>{
 
 })
 
