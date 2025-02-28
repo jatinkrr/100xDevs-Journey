@@ -19,7 +19,7 @@ adminRoute.put("/purchase",(req,res)=>{
 adminRoute.get("/purchase/preview",(req,res)=>{
 
 })
-
+ 
 module.exports={
     adminRoute
 }
