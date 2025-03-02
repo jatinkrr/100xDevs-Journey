@@ -22,7 +22,7 @@ const course = new Schema({
     imageUrl : String,
     createrId: ObjectId
 })
-const purchase = new Schema({
+const purchase = new Schema({ 
    courseId:ObjectId,
    userId:ObjectId
 })
