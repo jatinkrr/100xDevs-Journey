@@ -19,6 +19,7 @@ const course = new Schema({
     title : String,
     discription : String,
     price :Number,
+    courseid:ObjectId
     
 })
 const purchase = new Schema({

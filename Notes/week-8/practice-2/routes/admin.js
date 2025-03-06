@@ -1,5 +1,6 @@
 const {Router} = require("express")
 const {adminmodel} = require("../db")
+const {coursemodel} = require("../db")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const admin_JWT_SECRET = process.env.admin_JWT_SECRET
@@ -60,6 +61,18 @@ adminRoute.post("/signin",async (req,res)=>{
     }
 
 })
+
+adminRoute.post("/course",(req,res)=>{
+    const {title ,discription,price,courseid } = req.body
+
+    coursemodel.create({
+        title ,discription,price,courseid
+    })
+    res.json({
+        msg:"course created"
+    })
+})
+
 
 module.exports = {
     adminRoute
