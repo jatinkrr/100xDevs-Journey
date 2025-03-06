@@ -1,9 +1,11 @@
 const {Router} = require("express")
 const {usermodel} = require("../db")
+// const {middlewares} = require("../middlewares/user")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const user_JWT_SECRET = process.env.user_JWT_SECRET
 const userRoute = Router()
+
 
 userRoute.post("/signup",async (req,res)=>{
     const firstName = req.body.firstName

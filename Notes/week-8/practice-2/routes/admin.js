@@ -1,6 +1,7 @@
 const {Router} = require("express")
 const {adminmodel} = require("../db")
 const {coursemodel} = require("../db")
+const {middleware} = require("../middlewares/admin")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const admin_JWT_SECRET = process.env.admin_JWT_SECRET
@@ -62,15 +63,25 @@ adminRoute.post("/signin",async (req,res)=>{
 
 })
 
-adminRoute.post("/course",(req,res)=>{
-    const {title ,discription,price,courseid } = req.body
+adminRoute.post("/course",middleware,async (req,res)=>{
 
-    coursemodel.create({
-        title ,discription,price,courseid
+    const adminId = req.adminid
+
+
+try{
+    const {title ,discription,price} = req.body
+  const course = await coursemodel.create({
+        title ,discription,price,createrid:adminId
     })
     res.json({
-        msg:"course created"
+        msg:"course created",
+        courseid:course._id
     })
+}catch(e){
+    res.json({
+        msg:"course can't be created"
+    })
+}
 })
 
 
