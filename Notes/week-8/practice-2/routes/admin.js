@@ -87,4 +87,4 @@ try{
 
 module.exports = {
     adminRoute
-}
+}  
