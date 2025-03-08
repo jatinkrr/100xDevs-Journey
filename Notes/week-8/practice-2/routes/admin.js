@@ -83,6 +83,32 @@ try{
     })
 }
 })
+adminRoute.put("/course",middleware,async (req,res)=>{
+
+    const adminId = req.adminid
+
+
+try{
+    const {title ,discription,price,courseid} = req.body
+  const course = await coursemodel.updateOne({
+    _id: courseid
+  },
+    {
+        title ,
+        discription,
+        price,
+        createrid:adminId
+    })
+    res.json({
+        msg:"course updated",
+        courseid:course._id
+    })
+}catch(e){
+    res.json({
+        msg:"course can't be updated"
+    })
+}
+})
 
 
 module.exports = {
