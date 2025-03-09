@@ -1,6 +1,6 @@
 const {Router} = require("express")
-const {usermodel} = require("../db")
-// const {middlewares} = require("../middlewares/user")
+const {usermodel, purchasemodel, coursemodel} = require("../db")
+const {middleware} = require("../middlewares/user")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const user_JWT_SECRET = process.env.user_JWT_SECRET
@@ -62,6 +62,24 @@ userRoute.post("/signin",async (req,res)=>{
     }
 
 })
+
+
+userRoute.get("/purchases", middleware ,async(req,res)=>{
+    const userId = req.userId
+
+    const purchase = await purchasemodel.find({
+            userId
+    })
+    const courseData = await coursemodel.find({
+        _id: {$in: purchase.map(x=> x.courseId)}
+    })
+    res.json({
+        purchase,courseData
+    })
+
+})
+
+
 
 module.exports = {
     userRoute

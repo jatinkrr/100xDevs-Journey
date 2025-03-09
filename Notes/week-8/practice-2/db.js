@@ -19,11 +19,12 @@ const course = new Schema({
     title : String,
     discription : String,
     price :Number,
-    createrid:ObjectId
+    courseid:ObjectId
     
 })
 const purchase = new Schema({
-   
+   userId:ObjectId,
+   courseId: ObjectId
 })
 
 const usermodel = mongoose.model("userData", user)

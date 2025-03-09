@@ -3,6 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const {userRoute} = require("./routes/user")
 const {adminRoute} = require("./routes/admin")
+const {courseRouter} = require("./routes/course")
 const app = express()
 
 
@@ -12,6 +13,7 @@ app.use(express.json())
 
 app.use("/user",userRoute)
 app.use("/admin",adminRoute)
+app.use("/course", courseRouter)
 
 
 

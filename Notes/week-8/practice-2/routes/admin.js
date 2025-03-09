@@ -109,6 +109,11 @@ try{
         msg:"course updated",
         courseid:course._id
     })
+    if(!course){
+        res.json({
+            msg:"can't find user"
+        })
+    }
 }catch(e){
     res.json({
         msg:"course can't be updated"
