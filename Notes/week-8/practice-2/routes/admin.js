@@ -8,12 +8,12 @@ const admin_JWT_SECRET = process.env.admin_JWT_SECRET
 const adminRoute = Router()
 
 adminRoute.post("/signup",async (req,res)=>{
+try{
     const firstName = req.body.firstName
     const lastName = req.body.lastName
     const email = req.body.email 
     const password = req.body.password;
 
-try{
     const hashedpassword = await bcrypt.hash(password,5)
    await adminmodel.create({
         firstName,
@@ -33,7 +33,7 @@ try{
 })
 
 adminRoute.post("/signin",async (req,res)=>{
-
+try{
     const email = req.body.email 
     const password = req.body.password
 
@@ -60,15 +60,20 @@ adminRoute.post("/signin",async (req,res)=>{
             msg:"invalid credantials"
         })
     }
+}catch(e){
+    res.json({
+        msg:"invalid signin"
+    })
+}
 
 })
 
 adminRoute.post("/course",middleware,async (req,res)=>{
 
+try{
     const adminId = req.adminid
 
 
-try{
     const {title ,discription,price} = req.body
   const course = await coursemodel.create({
         title ,discription,price,createrid:adminId
@@ -83,22 +88,22 @@ try{
     })
 }
 })
-adminRoute.put("/course",middleware,async (req,res)=>{
 
+adminRoute.put("/course",middleware,async (req,res)=>{
+ 
     const adminId = req.adminid
 
 
 try{
     const {title ,discription,price,courseid} = req.body
   const course = await coursemodel.updateOne({
-    // in updateOne we have to add filter, so check what course we have to change 
-    _id: courseid, //flying beast id
-    createrid:adminId // createrid: flying beast,if we dont add "createrid:adminid" then anyone will come and udate the changes" ager hum yeah creater id nahi lagate toh koi bhi aaker hamra course update ker sakta tha"
-  }, {
+    _id: courseid
+  },
+    {
         title ,
         discription,
         price,
-        
+        createrid:adminId
     })
     res.json({
         msg:"course updated",
@@ -110,7 +115,28 @@ try{
     })
 }
 })
+adminRoute.get("/courses/bulk",middleware,async (req,res)=>{
 
+    const adminId = req.adminid
+
+
+try{
+   
+  const courses = await coursemodel.findOne({
+   
+    createrid:adminId
+
+  })
+    res.json({
+        msg:"your course ",
+       courses
+    })
+}catch(e){
+    res.json({
+        msg:"you dont have courses"
+    })
+}
+})
 
 module.exports = {
     adminRoute
