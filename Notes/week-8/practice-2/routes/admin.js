@@ -91,13 +91,14 @@ adminRoute.put("/course",middleware,async (req,res)=>{
 try{
     const {title ,discription,price,courseid} = req.body
   const course = await coursemodel.updateOne({
-    _id: courseid
-  },
-    {
+    // in updateOne we have to add filter, so check what course we have to change 
+    _id: courseid, //flying beast id
+    createrid:adminId // createrid: flying beast,if we dont add "createrid:adminid" then anyone will come and udate the changes" ager hum yeah creater id nahi lagate toh koi bhi aaker hamra course update ker sakta tha"
+  }, {
         title ,
         discription,
         price,
-        createrid:adminId
+        
     })
     res.json({
         msg:"course updated",
