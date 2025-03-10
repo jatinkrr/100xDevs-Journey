@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+</head>
+<body>
+    <div id="parentDiv">
+
+    </div>
+  
+  
+    <script>
+        let stateCount  = {
+            count:0
+            
+        }
+    
+        function onBuutonPress(){
+            stateCount.count++;
+
+            renderButtonRerender()
+        } 
+        function renderButtonRerender(){
+            document.getElementById("parentDiv").innerHTML=""
+            const component = renderButton(stateCount.count)
+            document.getElementById("parentDiv").appendChild(component)
+        }
+    
+    function renderButton(count){
+        const button=document.createElement("button")
+        button.innerHTML = `counter ${count}`;
+        button.setAttribute("onclick", `onBuutonPress()`)
+        document.getElementById("parentDiv").appendChild(button)
+        return button
+    }
+    renderButtonRerender()
+    </script>
+</body>
+
+
+
+
+
+
+</html>
+
