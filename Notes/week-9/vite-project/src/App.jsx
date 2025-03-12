@@ -4,7 +4,21 @@ function App() {
   return (
     <div style={{backgroundColor:"#dfe6e9", height:"100vh" ,padding:"0px", margin:"0px" }} >
     
-  
+
+    <div style={{display:"flex" , border:"1px solid black", justifyContent:"center" ,}}>
+      <div style={{paddingRight:"20px"}}>
+         <div>
+        <Navbar />
+      </div>
+    </div>
+     
+    <div>
+         <div>
+        <Navbar />
+      </div>
+    </div>
+     
+    </div>
 
 
     <div style={{display:"flex", justifyContent:"center", }}>
@@ -35,11 +49,11 @@ function App() {
   
 
 
-    <div>
+    {/* <div>
       <div>
         <ToggleMsg />
       </div>
-    </div>
+    </div> */}
 </div>
   )
 }
@@ -93,23 +107,37 @@ function ProfileCard(){
 }
 
 
-function ToggleMsg(){
-  let [isvisible, setisvisibe] = useState(true);
+// function ToggleMsg(){
+//   let [isvisible, setisvisibe] = useState(true);
 
-  function toggle(){
-    setisvisibe(!isvisible);
+//   function toggle(){
+//     setisvisibe(!isvisible);
+//   }
+
+//   return (
+//     <div>
+//       <button onClick={toggle}>Toggle msg</button>
+//       {isvisible && <p>this msg is conditionally toggled</p>}
+//     </div>
+//   )
+
+// }
+
+function Navbar(){
+  let [notification, setnotifiaction] = useState(0)
+
+  function showNotification(){
+    setnotifiaction(notification + 1)
   }
 
-  return (
+  return(
     <div>
-      <button onClick={toggle}>Toggle msg</button>
-      {isvisible && <p>this msg is conditionally toggled</p>}
+      <button onClick={showNotification}> notification</button>
+      {notification}
     </div>
   )
 
 }
-
-
 
 
 
