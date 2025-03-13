@@ -123,17 +123,20 @@ function ProfileCard(){
 
 // }
 
+
+
+
 function Navbar(){
-  let [notification, setnotifiaction] = useState(0)
+  let [notification, setnotification] = useState(0)
 
   function showNotification(){
-    setnotifiaction(notification + 1)
+    setnotification(notification + 1)
   }
 
   return(
     <div>
       <button onClick={showNotification}> notification</button>
-      {notification}
+      {notification }
     </div>
   )
 
@@ -143,6 +146,24 @@ function Navbar(){
 
 
 export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
