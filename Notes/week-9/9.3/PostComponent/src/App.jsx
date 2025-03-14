@@ -12,7 +12,7 @@ function App() {
 function PostComponent(){
   return(
     <div>
-     
+     this is how
     </div>
   )
 }
