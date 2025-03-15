@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json())
 
 
-
+ 
 app.use("/user",userRoute)
 app.use("/admin",adminRoute)
 app.use("/course", courseRouter)
@@ -21,7 +21,7 @@ app.use("/course", courseRouter)
 
 async function main(){
    await mongoose.connect(process.env.mongoose_url)
-    app.listen(3000)
+    app.listen(4000)
     console.log("connected to DataBase")
 }
 main()
