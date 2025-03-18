@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 function App() {
@@ -12,34 +12,43 @@ function App() {
 
 function Clock(){
 
-  let [hours,sethours] = useState(0)
-  let[minute,setminute] = useState(0)
   let[second,setsecond] = useState(0)
 
-  
-   setInterval(()=>{
-      sethours(hours+1)
-    },3600000)
 
-    setInterval(() => {
-      setminute(minute+1)
-    }, 60000);
-    
-    setInterval(() => {
-      setsecond(second+1)
-    }, 1000);
-    
+    console.log("counter")
+    // we cant directly use se interval here coz when clock rerender then output will start flashing on th screens,
+    // "use HOOKING into the lifecycle event of react"
+
+    //in lifecycle there is events 1) mounting, 2) re-rendering, 3) unmounting 
+    // mounting "jabh pehli baar counter render ho tabh setinterval run kerna bus"
+    // for using this all jargons use "useeffect" hook
+
+
+    // useEffect is a gaurd our setInterval from re-rendaring
+    useEffect(function(){
+
+      setInterval(() => {
+        setsecond(second => second + 1);
+
+        //we can write "setsecond(second => second+1)" in different form like this
+
+        // setsecond(function(second){
+        //   return second+1
+        // })
+          }, 1000);
+          
+      console.log("mounted") 
+    },[]) // jo bhi useEffect ke ander likha hai vo baar baar render nahi hoga bus ek baar hi hoga
+    // this this empty eraay is known as" dependancy array" learn it funter
 
 
 
   return (
    <div>
-     <span> <h1>{hours}</h1></span>
-     <span> <h1>{minute}</h1></span>
+
      <span> <h1>{second}</h1></span>
    </div>
     
-      // {/* <button onClick={increaseHours}>startClock</button> */}
     
   )
 
