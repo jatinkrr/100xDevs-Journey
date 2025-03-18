@@ -32,11 +32,11 @@ function Clock(){
 
         //we can write "setsecond(second => second+1)" in different form like this
 
-        // setsecond(function(second){
+        // setsecond(function(second){   
         //   return second+1
         // })
           }, 1000);
-          
+
       console.log("mounted") 
     },[]) // jo bhi useEffect ke ander likha hai vo baar baar render nahi hoga bus ek baar hi hoga
     // this this empty eraay is known as" dependancy array" learn it funter
