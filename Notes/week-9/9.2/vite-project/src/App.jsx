@@ -35,7 +35,7 @@ function Clock(){
         // setsecond(function(second){   
         //   return second+1
         // })
-          }, 1000);
+          }, 1000);  
 
       console.log("mounted") 
     },[]) // jo bhi useEffect ke ander likha hai vo baar baar render nahi hoga bus ek baar hi hoga
