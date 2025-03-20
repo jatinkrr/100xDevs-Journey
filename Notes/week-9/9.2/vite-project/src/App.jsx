@@ -3,56 +3,57 @@ import { useState, useEffect } from 'react'
 
 function App() {
   return(
-    <Clock></Clock>
+    // <Clock></Clock>
     // <Counter></Counter>  
+    <ClockPractise />
   )
 
 }
 
 
-function Clock(){
+// function Clock(){
 
-  let[second,setsecond] = useState(0)
-
-
-    console.log("counter")
-    // we cant directly use se interval here coz when clock rerender then output will start flashing on th screens,
-    // "use HOOKING into the lifecycle event of react"
-
-    //in lifecycle there is events 1) mounting, 2) re-rendering, 3) unmounting 
-    // mounting "jabh pehli baar counter render ho tabh setinterval run kerna bus"
-    // for using this all jargons use "useeffect" hook
+//   let[second,setsecond] = useState(0)
 
 
-    // useEffect is a gaurd our setInterval from re-rendaring
-    useEffect(function(){
+//     console.log("counter")
+//     // we cant directly use se interval here coz when clock rerender then output will start flashing on th screens,
+//     // "use HOOKING into the lifecycle event of react"
 
-      setInterval(() => {
-        setsecond(second => second + 1);
-
-        //we can write "setsecond(second => second+1)" in different form like this
-
-        // setsecond(function(second){   
-        //   return second+1
-        // })
-          }, 1000);  
-
-      console.log("mounted") 
-    },[]) // jo bhi useEffect ke ander likha hai vo baar baar render nahi hoga bus ek baar hi hoga
-    // this this empty eraay is known as" dependancy array" learn it funter
+//     //in lifecycle there is events 1) mounting, 2) re-rendering, 3) unmounting 
+//     // mounting "jabh pehli baar counter render ho tabh setinterval run kerna bus"
+//     // for using this all jargons use "useeffect" hook
 
 
+//     // useEffect is a gaurd our setInterval from re-rendaring
+//     useEffect(function(){
 
-  return (
-   <div>
+//       setInterval(() => {
+//         setsecond(second => second + 1);
 
-     <span> <h1>{second}</h1></span>
-   </div>
+//         //we can write "setsecond(second => second+1)" in different form like this
+
+//         // setsecond(function(second){   
+//         //   return second+1
+//         // })
+//           }, 1000);  
+
+//       console.log("mounted") 
+//     },[]) // jo bhi useEffect ke ander likha hai vo baar baar render nahi hoga bus ek baar hi hoga
+//     // this this empty eraay is known as" dependancy array" learn it funter
+
+
+
+//   return (
+//    <div>
+
+//      <span> <h1>{second}</h1></span>
+//    </div>
     
     
-  )
+//   )
 
-} 
+// } 
 
 
 
@@ -95,5 +96,63 @@ function Clock(){
 //   )
 
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//practise
+
+
+function ClockPractise(){
+  
+  let [second,setsecond] = useState(0)
+  
+  
+  useEffect(()=>{
+    setInterval(() => {
+      setsecond( second => second+1)
+    }, 1000);
+  },[])
+  
+  
+  
+  return (
+    <div>
+      <h1>{second}</h1>
+    </div>
+  )
+}
+
+
+
+
+
+
 
 export default App
