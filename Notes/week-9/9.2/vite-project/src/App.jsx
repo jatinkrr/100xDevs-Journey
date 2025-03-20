@@ -2,13 +2,69 @@ import { useState, useEffect } from 'react'
 
 
 function App() {
+
+  // conditional rendering
+  let clockVisible = true
   return(
     // <Clock></Clock>
     // <Counter></Counter>  
-    <ClockPractise />
+
+
+
+
+  //conditional rendering
+  <div>
+     {clockVisible ? <ClockPractise></ClockPractise> :null} 
+  </div>
+  
   )
 
 }
+
+
+//practise
+
+
+function ClockPractise(){
+  
+  let [second,setsecond] = useState(0)
+
+
+
+  
+  
+  useEffect(()=>{
+    setInterval(() => {
+      setsecond( second => second+1)
+    }, 1000);
+  },[])
+  
+  
+  
+  
+  return (
+    <div>
+      <h1>{second}</h1>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // function Clock(){
@@ -126,29 +182,6 @@ function App() {
 
 
 
-//practise
-
-
-function ClockPractise(){
-  
-  let [second,setsecond] = useState(0)
-  
-  
-  useEffect(()=>{
-    setInterval(() => {
-      setsecond( second => second+1)
-    }, 1000);
-  },[])
-  
-  
-  
-  return (
-    <div>
-      <h1>{second}</h1>
-    </div>
-  )
-}
-
 
 
 
@@ -156,3 +189,12 @@ function ClockPractise(){
 
 
 export default App
+
+
+
+
+
+
+
+
+
