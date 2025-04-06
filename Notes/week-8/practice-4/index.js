@@ -5,7 +5,6 @@ const express = require("express")
 
 const app = express()
 
-
 async function main(){
     await mongoose.connect(process.env.mongooseUrl)
     app.listen(3000)
