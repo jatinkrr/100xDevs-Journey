@@ -16,7 +16,9 @@ const admin = new Schema({
     email:String,
     password:String,
 })
-
+    
+// const userModel = mongoose.model("userData",user)
+// const adminModel= mongoose.model("adminData",admin)
 const userModel = mongoose.model("userData",user)
 const adminModel= mongoose.model("adminData",admin)
 
