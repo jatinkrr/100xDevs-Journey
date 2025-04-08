@@ -32,6 +32,10 @@ const purchase = new Schema({
     
 // const userModel = mongoose.model("userData",user)
 // const adminModel= mongoose.model("adminData",admin)
+// const userModel = mongoose.model("userData",user)
+// const adminModel= mongoose.model("adminData",admin)
+// const couseModel= mongoose.model("coursedata",course)
+// const purchaseModel= mongoose.model("purchasedata",purchase)
 const userModel = mongoose.model("userData",user)
 const adminModel= mongoose.model("adminData",admin)
 const couseModel= mongoose.model("coursedata",course)
