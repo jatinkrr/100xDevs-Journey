@@ -16,13 +16,30 @@ const admin = new Schema({
     email:String,
     password:String,
 })
+
+const course = new Schema({
+    title : String,
+    discription : String,
+    price :Number,
+    courseid:ObjectId
+    
+})
+
+const purchase = new Schema({
+   userId:ObjectId,
+   courseId: ObjectId
+})
     
 // const userModel = mongoose.model("userData",user)
 // const adminModel= mongoose.model("adminData",admin)
 const userModel = mongoose.model("userData",user)
 const adminModel= mongoose.model("adminData",admin)
+const couseModel= mongoose.model("coursedata",course)
+const purchaseModel= mongoose.model("purchasedata",purchase)
 
 module.exports={
     userModel,
-    adminModel
+    adminModel,
+    couseModel,
+purchaseModel
 }
