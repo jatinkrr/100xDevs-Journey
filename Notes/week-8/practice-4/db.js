@@ -42,4 +42,4 @@ module.exports={
     adminModel,
     couseModel,
 purchaseModel
-}
+}  
